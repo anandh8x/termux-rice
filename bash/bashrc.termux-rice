@@ -27,5 +27,5 @@ alias c='clear'
 alias reload='source ~/.bashrc'
 
 # Compact phone-friendly prompt
-PS1='\[\e[38;5;110m\]\w\[\e[0m\]\n\[\e[38;5;215m\]\$\[\e[0m\] '
+PS1='\n\[\e[38;5;110m\]\w\[\e[0m\]\n\[\e[38;5;215m\]\$\[\e[0m\] '
 # <<< termux-rice <<<
