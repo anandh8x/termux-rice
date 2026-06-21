@@ -1,0 +1,31 @@
+# >>> termux-rice >>>
+# Better shell history
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTCONTROL=ignoreboth:erasedups
+shopt -s histappend
+
+_termux_rice_history_sync='history -a; history -c; history -r'
+case ";${PROMPT_COMMAND-};" in
+  *"history -a; history -c; history -r"*) ;;
+  *) PROMPT_COMMAND="${_termux_rice_history_sync}${PROMPT_COMMAND:+; $PROMPT_COMMAND}" ;;
+esac
+unset _termux_rice_history_sync
+
+# Better tab completion
+_termux_rice_prefix="${PREFIX:-/data/data/com.termux/files/usr}"
+[ -f "$_termux_rice_prefix/share/bash-completion/bash_completion" ] && . "$_termux_rice_prefix/share/bash-completion/bash_completion"
+unset _termux_rice_prefix
+
+# Navigation shortcuts
+alias ls='ls --color=auto'
+alias ll='ls -lh'
+alias la='ls -lha'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias c='clear'
+alias reload='source ~/.bashrc'
+
+# Compact phone-friendly prompt
+PS1='\[\e[38;5;110m\]\w\[\e[0m\]\n\[\e[38;5;215m\]\$\[\e[0m\] '
+# <<< termux-rice <<<
